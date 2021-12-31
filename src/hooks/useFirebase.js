@@ -39,8 +39,7 @@ const useFirebase = () => {
 
                 updateProfile(auth.currentUser, {
                     displayName: name
-                }
-                )
+                })
                     .then(() => {
                     }).catch((error) => {
                         setError(error.massage)
