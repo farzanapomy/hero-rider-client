@@ -4,20 +4,24 @@ import { useForm } from "react-hook-form";
 import './Riders.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 
 
 const Riders = () => {
-    const { user } = useAuth()
-    const { register, handleSubmit } = useForm();
+    const { user, error } = useAuth()
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate()
     const onSubmit = data => {
 
         axios.post('http://localhost:5000/riders', data)
-            .then(res =>
+            .then(res => {
 
-                console.log(data))
-        navigate('/BikerUser')
+
+            })
+
+        navigate('/bikerUser')
         console.log(data)
+
     };
 
 
@@ -25,6 +29,7 @@ const Riders = () => {
 
     return (
         <div>
+            <h2>{error}</h2>
             <form onSubmit={handleSubmit(onSubmit)} className='register-form'>
                 <input
                     {...register("fullName",
@@ -46,12 +51,27 @@ const Riders = () => {
                         { required: true })}
                     placeholder='Enter your phone number'
                 />
+                <input
+                    {...register("password",
+                        { required: true })}
+                    type="password"
+                    name="password"
+                    placeholder='Enter your password'
+                />
+                <input
+                    {...register("password",
+                        { required: true })}
+                    type="password"
+                    name="password2"
+                    placeholder='Confirm password'
+                />
+                 {errors.password && <p className='text-danger'>Password did not match</p>}
 
                 <input
                     {...register("address", { required: true })}
                     placeholder='Enter Your Address'
                 />
-                <label>Enter your driving licence picture</label>
+                <label>Drop Your licence picture</label>
                 <input
 
                     type="file"
@@ -67,6 +87,7 @@ const Riders = () => {
                 </select>
                 <input type="submit" className='submit' />
             </form>
+
         </div>
     );
 };
