@@ -13,7 +13,7 @@ const useFirebase = () => {
 
     // sign in with google 
 
-    const signInWithGoogle = (navigate) => {
+    const signInWithGoogle = () => {
         setIsLoading(true)
         const googleProvider = new GoogleAuthProvider()
         signInWithPopup(auth, googleProvider)
@@ -21,7 +21,6 @@ const useFirebase = () => {
                 const user = result.user;
                 // saveUser(user.email, user.displayName, 'PUT')
                 console.log(user);
-                navigate('/dashboard')
             })
             .catch((error) => {
                 setError(error.massage)
@@ -34,19 +33,18 @@ const useFirebase = () => {
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
             .then((result) => {
-                // const newUser = { email, displayName: name };
-                // setUser(newUser);
-                // // saveUser(email, name, "POST")
+                const newUser = { email, displayName: name };
+                setUser(newUser);
+                // saveUser(email, name, "POST")
 
-                // updateProfile(auth.currentUser, {
-                //     displayName: name
-                // }
-                console.log(result);
-                // )
-                //     .then(() => {
-                //     }).catch((error) => {
-                //         setError(error.massage)
-                //     })
+                updateProfile(auth.currentUser, {
+                    displayName: name
+                }
+                )
+                    .then(() => {
+                    }).catch((error) => {
+                        setError(error.massage)
+                    })
             })
             .catch((error) => {
                 setError(error.massage)

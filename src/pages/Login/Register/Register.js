@@ -1,17 +1,14 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth'
-import useFirebase from '../../../hooks/useFirebase';
 import './Register.css'
 
 const Register = () => {
     const { register, handleSubmit } = useForm();
     const { registerUser } = useAuth()
-    // const navigate = useNavigate()
-    
+
     const onSubmit = data => {
-        registerUser(data.email, data.password)
+        registerUser(data.email, data.password, data.name)
 
         console.log(data)
     };
@@ -44,7 +41,7 @@ const Register = () => {
                 />
                 <input type="submit" />
             </form>
-            
+
 
         </div>
     );
