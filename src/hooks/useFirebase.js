@@ -6,7 +6,7 @@ authInitialize()
 
 const useFirebase = () => {
     const [user, setUser] = useState({})
-    // const [admin, setAdmin] = useState(false)
+    const [admin, setAdmin] = useState(false)
     const [error, setError] = useState('')
     const [isLoading, setIsLoading] = useState(true)
     const auth = getAuth();
@@ -20,7 +20,7 @@ const useFirebase = () => {
             .then((result) => {
                 const newUser = { email, displayName: name };
                 setUser(newUser);
-                // saveUser(email, name, "POST")
+                saveUser(email, name)
 
                 updateProfile(auth.currentUser, {
                     displayName: name
@@ -56,12 +56,12 @@ const useFirebase = () => {
     // setAdmin
 
 
-    // useEffect(() => {
-    //     const url = `https://whispering-crag-95185.herokuapp.com/users/${user.email}`
-    //     fetch(url)
-    //         .then(res => res.json())
-    //         .then(data => setAdmin(data.admin))
-    // }, [user.email])
+    useEffect(() => {
+        const url = `https://protected-atoll-65365.herokuapp.com/users/${user.email}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
 
 
 
@@ -98,17 +98,17 @@ const useFirebase = () => {
 
 
     // save user
-    // const saveUser = (email, displayName, method) => {
-    //     const user = { email, displayName };
-    //     fetch('https://whispering-crag-95185.herokuapp.com/users', {
-    //         method: method,
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
-    //     })
-    //         .then()
-    // }
+    const saveUser = (email, displayName) => {
+        const user = { email, displayName };
+        fetch('https://protected-atoll-65365.herokuapp.com/users', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
 
 
 
@@ -116,7 +116,7 @@ const useFirebase = () => {
     return {
 
         user,
-        // admin,
+        admin,
         isLoading,
         registerUser,
         logInUser,

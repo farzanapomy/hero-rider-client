@@ -5,7 +5,8 @@ import './Menubar.css';
 import useAuth from '../../../hooks/useAuth';
 
 const Menubar = () => {
-    const { user, logOut } = useAuth()
+    const { user, logOut, admin } = useAuth()
+    console.log(admin);
     return (
 
         <>
@@ -19,14 +20,14 @@ const Menubar = () => {
                     <Navbar.Collapse className="justify-content-end ">
                         <Nav className="ms-auto">
                             <Nav.Link as={Link} to="/home#home">Home</Nav.Link>
-                            {!user.email && 
-                            <div>
-
+                            {!user.email &&
                                 <Nav.Link as={Link} to="/RidersForm">Join as a Rider</Nav.Link>
+                            }
+                            {!user.email &&
                                 <Nav.Link as={Link} to="/LearnerDriving">Join as a Learner</Nav.Link>
-                            </div>}
+                            }
                             {
-                                user.email &&
+                                admin &&
                                 <Nav.Link as={Link} to="/Dashboard">Dashboard</Nav.Link>
                             }
                             {

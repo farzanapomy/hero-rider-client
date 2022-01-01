@@ -29,7 +29,7 @@ const Login = () => {
             </form>
             <div>
                 <h6>New User ??
-                    <Link to='/RidersForm'> Go to register.
+                    <Link to='/register'> Go to register.
                     </Link>
                 </h6>
             </div>

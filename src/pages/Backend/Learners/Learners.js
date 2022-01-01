@@ -15,7 +15,7 @@ const Learners = () => {
     return (
         <div>
             <h1 className='my-5'>Hello learner</h1>
-            {
+        {
                 Learners.map(learner=> <Learner
                     key={learner._id}
                     learner={learner}
