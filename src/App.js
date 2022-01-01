@@ -5,6 +5,7 @@ import AllRider from './pages/Backend/AllRider/AllRider';
 import LearnerServices from './pages/Backend/LearnerServices/LearnerServices';
 import Riders from './pages/Backend/Riders/Riders';
 import RidersForm from './pages/Backend/RidersForm/RidersForm';
+import Footer from './pages/Home/Footer/Footer';
 import Home from './pages/Home/Home/Home';
 import Menubar from './pages/Home/Menubar/Menubar';
 import Login from './pages/Login/Login/Login';
@@ -30,6 +31,7 @@ function App() {
             <Route path="/LearnerServices" element={<LearnerServices />} />
           </Routes>
         </Router>
+        <Footer></Footer>
       </AuthProvider>
 
     </div>
