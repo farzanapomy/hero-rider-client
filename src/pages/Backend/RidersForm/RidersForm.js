@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth'
 import './RidersForm.css'
 
 const RidersForm = () => {
-    const { user, register, handleSubmit } = useForm();
+    const { register, handleSubmit } = useForm();
     const { registerUser } = useAuth()
     const navigate = useNavigate()
+    const [image, setImage] = useState(null)
 
     const onSubmit = data => {
         // if (data.password != data.password2) {
@@ -60,22 +61,24 @@ const RidersForm = () => {
                     {...register("area", { required: true })}
                     placeholder='Confirm your area'
                 />
-                <p>Drop your driving licence picture</p>
-                {/* <input
-                    type="file"
-                    name="picture"
-                />
-                <p>Drop your NID picture</p>
+               
                 <input
-                    type="file"
-                    name="picture"
+                    {...register("licenceFile", { required: true })}
+                   
+                    placeholder='Drop your driving licence picture'
+
+                />
+               
+                <input
+                    {...register("licenceFile", { required: true })}
+                   placeholder='Drop your NID picture'
                 />
 
-                <p>Drop your Profile picture</p>
+               
                 <input
-                    type="file"
-                    name="picture"
-                /> */}
+                    {...register("profilePic", { required: true })}
+                    placeholder='Drop your Profile picture'
+                />
 
                 <h2>Now give your car information </h2>
                 <input

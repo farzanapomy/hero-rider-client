@@ -29,7 +29,7 @@ const useFirebase = () => {
                     }).catch((error) => {
                         setError(error.massage)
                     })
-                navigate('/bikerUser')
+                navigate('/Riders')
                 console.log(result);
             })
             .catch((error) => {
@@ -44,7 +44,7 @@ const useFirebase = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
-                navigate('/bikerUser')
+                navigate('/Riders')
             })
             .catch((error) => {
                 setError(error.massage)
