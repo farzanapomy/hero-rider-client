@@ -5,12 +5,21 @@ import { Form, Table } from 'react-bootstrap';
 const AllRider = () => {
     const [riders, setRiders] = useState([])
     const [search, setSearch] = useState("");
+    const [count, setCount] = useState(0)
+    const [page, setPage] = useState(0);
+
 
 
     useEffect(() => {
         fetch(`https://protected-atoll-65365.herokuapp.com/AllRider`)
             .then(res => res.json())
-            .then((data) => setRiders(data.result));
+            .then((data) => {
+                setRiders(data.result);
+                const count = data.count;
+                const page = Math.ceil(count / 10);
+                setCount(page);
+            });
+
 
     }, [])
 
@@ -74,7 +83,17 @@ const AllRider = () => {
                 )}
 
             </Table>
-
+            <div className="pagination p-2 m-2 ">
+                {
+                    [...Array(count).keys()]
+                        .map(number => <button
+                            className={number === page ? 'selected' : ''}
+                            key={number}
+                            onClick={() => setPage(number)}
+                        >{number + 1}</button>
+                        )
+                }
+            </div>
         </div>
     );
 };
