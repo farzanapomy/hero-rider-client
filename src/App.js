@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import AuthProvider from './contexts/AuthProvider';
 import AllRider from './pages/Backend/AllRider/AllRider';
-import LearnerServices from './pages/Backend/LearnerServices/LearnerServices';
+import LearnerDriving from './pages/Backend/LearnerDriving/LearnerDriving';
 import Riders from './pages/Backend/Riders/Riders';
 import RidersForm from './pages/Backend/RidersForm/RidersForm';
 import Footer from './pages/Home/Footer/Footer';
@@ -28,7 +28,7 @@ function App() {
               <Route path="/AllRider" element={<AllRider />} />
             <Route path="/login" element={<Login />} />
             <Route path="/Register" element={<Register />} />
-            <Route path="/LearnerServices" element={<LearnerServices />} />
+            <Route path="/LearnerDriving" element={<LearnerDriving />} />
           </Routes>
         </Router>
         <Footer></Footer>

@@ -10,7 +10,7 @@ const Rider = ({ rider }) => {
         address,
         phone,
         area,
-        licenceFile,
+        licenseFile,
         nidFile,
         profilePic,
         carName,
@@ -36,7 +36,9 @@ const Rider = ({ rider }) => {
                     <p>Car Name: {carName}</p>
                     <br />
                     <h6>Detail information Images</h6>
-                    <img src={licenceFile} alt="" />
+                    <p>Car Model: {model}</p>
+                    <p>Car Name Palate: {namePalate}</p>
+                    <img src={licenseFile} alt="" />
                     <img src={nidFile} alt="" />
                 </Col>
             </Row>

@@ -20,6 +20,7 @@ const Menubar = () => {
                         <Nav className="ms-auto">
                             <Nav.Link as={Link} to="/home#home">Home</Nav.Link>
                             <Nav.Link as={Link} to="/RidersForm">Join as a Rider</Nav.Link>
+                            <Nav.Link as={Link} to="/LearnerDriving">Join as a Learner</Nav.Link>
                             {
                                 user.email &&
                                 <Nav.Link as={Link} to="/Dashboard">Dashboard</Nav.Link>
@@ -30,7 +31,7 @@ const Menubar = () => {
                             }
                             {
                                 user?.email &&
-                                <Nav.Link as={Link} to="/login" className='text-white'>
+                                <Nav.Link as={Link} to="/Riders" className='text-white'>
                                     Hello  {user?.displayName}
                                 </Nav.Link>
                             }

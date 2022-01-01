@@ -1,12 +1,12 @@
 import React from 'react';
-import LearnerServices from '../../Backend/LearnerServices/LearnerServices';
+import LearnerDriving from '../../Backend/LearnerDriving/LearnerDriving';
 import Riders from '../../Backend/RidersForm/RidersForm';
 
 const Home = () => {
     return (
         <div>
             <Riders></Riders>
-            <LearnerServices></LearnerServices>
+            <LearnerDriving></LearnerDriving>
         </div>
     );
 };

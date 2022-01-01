@@ -3,13 +3,13 @@ import axios from 'axios';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth'
-import './RidersForm.css'
+import './LearnerDriving.css'
 
-const RidersForm = () => {
+const LearnerDriving = () => {
     const { register, handleSubmit } = useForm();
     const { registerUser } = useAuth()
     const navigate = useNavigate()
-    const [image, setImage] = useState(null)
+
 
     const onSubmit = data => {
         // if (data.password != data.password2) {
@@ -18,7 +18,7 @@ const RidersForm = () => {
         // }
         registerUser(data.email, data.password, data.name, navigate)
 
-        axios.post('https://protected-atoll-65365.herokuapp.com/riders', data)
+        axios.post('https://protected-atoll-65365.herokuapp.com/LearnerDriving', data)
             .then(res => {
 
                 console.log(res);
@@ -57,43 +57,19 @@ const RidersForm = () => {
                         { required: true })}
                     placeholder='Enter your phone number'
                 />
-                <input
-                    {...register("area", { required: true })}
-                    placeholder='Confirm your area'
-                />
-               
-                <input
-                    {...register("licenceFile", { required: true })}
-                   
-                    placeholder='Drop your driving licence picture'
 
-                />
-               
+
+
                 <input
                     {...register("nidFile", { required: true })}
-                   placeholder='Drop your NID picture'
+                    placeholder='Drop your NID picture'
                 />
 
-               
+
                 <input
                     {...register("profilePic", { required: true })}
                     placeholder='Drop your Profile picture'
                 />
-
-                <h2>Now give your car information </h2>
-                <input
-                    {...register("carName", { required: true })}
-                    placeholder='Enter your car Name'
-                />
-                <input
-                    {...register("model,", { required: true })}
-                    placeholder='Enter car model'
-                />
-                <input
-                    {...register("namePalate,", { required: true })}
-                    placeholder='Enter name palate'
-                />
-
                 <select
                     {...register("vehicleType",
                         { required: true })}>
@@ -127,4 +103,4 @@ const RidersForm = () => {
     );
 };
 
-export default RidersForm;
+export default LearnerDriving;
