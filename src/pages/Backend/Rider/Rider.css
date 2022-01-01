@@ -1,9 +1,29 @@
 .profile-section img{
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
+    margin: 10px;
 }
 .profile-section h6{
     display: inline;
     margin: 0px 15px;
+}
+.profile-section{
+    line-height: 12px;
+    text-align: left;
+}
+
+.profile-section{
+    border-right: 4px dotted white;
+}
+.details-info img{
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.details-info{
+    text-align: right;
+    margin-left: 10px;
+    border-left: 4px dotted white;
 }
