@@ -44,7 +44,7 @@ const useFirebase = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
-                navigate('/home')
+                navigate('/Riders')
             })
             .catch((error) => {
                 setError(error.massage)
@@ -117,6 +117,7 @@ const useFirebase = () => {
 
         user,
         admin,
+        saveUser,
         isLoading,
         registerUser,
         logInUser,

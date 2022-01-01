@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Table } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Form, Table } from 'react-bootstrap';
 
 
 const AllRider = () => {
@@ -7,11 +7,12 @@ const AllRider = () => {
     const [search, setSearch] = useState("");
 
 
-    // useEffect(() => {
-    //     fetch(`https://protected-atoll-65365.herokuapp.com/AllRider`)
-    //         .then(res => res.json())
-    //         .then(data => setRiders(data))
-    // }, [])
+    useEffect(() => {
+        fetch(`https://protected-atoll-65365.herokuapp.com/AllRider`)
+            .then(res => res.json())
+            .then((data) => setRiders(data.result));
+
+    }, [])
 
 
     // find by search 
@@ -22,7 +23,7 @@ const AllRider = () => {
     const handleInputSearch = () => {
         fetch(`https://protected-atoll-65365.herokuapp.com/searchRiders?search=${search}`)
             .then((res) => res.json())
-            .then((result) => setRiders(result));
+            .then(data => setRiders(data))
 
         console.log(search);
     };
@@ -43,9 +44,9 @@ const AllRider = () => {
 
             <Table hover variant="dark" responsive>
                 <thead
-
                 >
                     <tr>
+                        <th>Check Box</th>
                         <th>Index</th>
                         <th>Rider Name</th>
                         <th>Area</th>
@@ -59,6 +60,7 @@ const AllRider = () => {
                         key={rider._id}
                     >
                         <tr>
+                            <td> <Form.Check aria-label="option 1" /></td>
                             <td>{index}</td>
                             <td>{rider.name}</td>
                             <td>{rider.area}</td>

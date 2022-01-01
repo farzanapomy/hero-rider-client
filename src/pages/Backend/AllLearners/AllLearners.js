@@ -1,15 +1,15 @@
-import React, {  useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 
 const AllLearners = () => {
     const [learners, setLearners] = useState([])
     const [search, setSearch] = useState("");
 
-    // useEffect(() => {
-    //     fetch(`https://protected-atoll-65365.herokuapp.com/LearnerDriving`)
-    //         .then(res => res.json())
-    //         .then(data => setLearners(data))
-    // }, [])
+    useEffect(() => {
+        fetch(`https://protected-atoll-65365.herokuapp.com/LearnerDriving`)
+            .then(res => res.json())
+            .then(data => setLearners(data.result))
+    }, [])
 
     const handleInputField = (e) => {
         setSearch(e.target.value);
