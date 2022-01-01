@@ -24,7 +24,7 @@ const Menubar = () => {
                             {!user.email &&
                                 <Nav.Link as={Link} to="/RidersForm">Join as a Rider</Nav.Link>
                             }
-                            
+
                             {!user.email &&
                                 <Nav.Link as={Link} to="/LearnerDriving">Join as a Learner</Nav.Link>
                             }
@@ -42,14 +42,14 @@ const Menubar = () => {
                             {
                                 (user?.email && !admin ) && 
                                 <Nav.Link as={Link} to="/Riders" className='text-white'>
-                                    Go to your profile
+                                   Rider profile
                                 </Nav.Link>
                             }
 
                             {
                                 (user?.email && !admin ) && 
                                 <Nav.Link as={Link} to="/Learners" className='text-white'>
-                                    your profile
+                                    Learner profile
                                 </Nav.Link>
                             }
 

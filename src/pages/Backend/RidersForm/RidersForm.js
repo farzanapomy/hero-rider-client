@@ -16,7 +16,7 @@ const RidersForm = () => {
         //     alert('your password did not match');
         //     return;
         // }
-        registerUser(data.email, data.password, data.name, navigate)
+        registerUser(data.email, data.password, data.name, navigate('/Riders'))
 
         axios.post('https://protected-atoll-65365.herokuapp.com/riders', data)
             .then(res => {
