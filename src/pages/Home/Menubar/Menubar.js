@@ -36,13 +36,13 @@ const Menubar = () => {
                             }
 
                             {
-                                user?.email &&
+                                (user?.email && !admin ) && 
                                 <Nav.Link as={Link} to="/Riders" className='text-white'>
                                     Go to your profile
                                 </Nav.Link>
                             }
                             {
-                                user?.email &&
+                                (user?.email && !admin ) && 
                                 <Nav.Link as={Link} to="/Learners" className='text-white'>
                                     your profile
                                 </Nav.Link>
