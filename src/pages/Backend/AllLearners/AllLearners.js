@@ -3,15 +3,36 @@ import { Table } from 'react-bootstrap';
 
 const AllLearners = () => {
     const [learners, setLearners] = useState([])
+    const [search, setSearch] = useState("");
 
-    useEffect(() => {
-        fetch(`https://protected-atoll-65365.herokuapp.com/LearnerDriving`)
-            .then(res => res.json())
-            .then(data => setLearners(data))
-    }, [])
+    // useEffect(() => {
+    //     fetch(`https://protected-atoll-65365.herokuapp.com/LearnerDriving`)
+    //         .then(res => res.json())
+    //         .then(data => setLearners(data))
+    // }, [])
+
+    const handleInputField = (e) => {
+        setSearch(e.target.value);
+    };
+
+    const handleInputSearch = () => {
+        fetch(`https://protected-atoll-65365.herokuapp.com/searchLearners?search=${search}`)
+            .then((res) => res.json())
+            .then((result) => setLearners(result));
+
+        console.log(search);
+    };
+
+
+
     return (
         <div className='container'>
-            <h2>Manage all Orders</h2>
+            <h2>Manage all Learner</h2>
+
+            <input onChange={handleInputField} type="text" className="p-2 m-3" />
+            <button onClick={handleInputSearch} className="btn btn-primary m-1">
+                Search
+            </button>
 
             <Table hover variant="dark" responsive>
                 <thead
@@ -36,7 +57,7 @@ const AllLearners = () => {
                             <td>{learner.area}</td>
                             <td>{learner.vehicleType}</td>
                             <td>
-                               {learner.phone}
+                                {learner.phone}
                             </td>
                         </tr>
 

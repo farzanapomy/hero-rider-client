@@ -1,17 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 
+
 const AllRider = () => {
     const [riders, setRiders] = useState([])
+    const [search, setSearch] = useState("");
 
-    useEffect(() => {
-        fetch(`https://protected-atoll-65365.herokuapp.com/AllRider`)
-            .then(res => res.json())
-            .then(data => setRiders(data))
-    }, [])
+
+    // useEffect(() => {
+    //     fetch(`https://protected-atoll-65365.herokuapp.com/AllRider`)
+    //         .then(res => res.json())
+    //         .then(data => setRiders(data))
+    // }, [])
+
+
+    // find by search 
+    const handleInputField = (e) => {
+        setSearch(e.target.value);
+    };
+
+    const handleInputSearch = () => {
+        fetch(`https://protected-atoll-65365.herokuapp.com/searchRiders?search=${search}`)
+            .then((res) => res.json())
+            .then((result) => setRiders(result));
+
+        console.log(search);
+    };
+
+
+
+
+
     return (
         <div className='container'>
-            <h2>Manage all Orders</h2>
+            <h2>Manage all Riders</h2>
+
+            <input onChange={handleInputField} type="text" className="p-2 m-3" />
+            <button onClick={handleInputSearch} className="btn btn-primary m-1">
+                Search
+            </button>
+
 
             <Table hover variant="dark" responsive>
                 <thead
@@ -36,7 +64,7 @@ const AllRider = () => {
                             <td>{rider.area}</td>
                             <td>{rider.vehicleType}</td>
                             <td>
-                               {rider.phone}
+                                {rider.phone}
                             </td>
                         </tr>
 
