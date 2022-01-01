@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Table } from 'react-bootstrap';
 
 const AllRider = () => {
     const [riders, setRiders] = useState([])
@@ -6,11 +7,44 @@ const AllRider = () => {
     useEffect(() => {
         fetch(`https://protected-atoll-65365.herokuapp.com/AllRider`)
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => setRiders(data))
     }, [])
     return (
-        <div>
-            
+        <div className='container'>
+            <h2>Manage all Orders</h2>
+
+            <Table hover variant="dark" responsive>
+                <thead
+
+                >
+                    <tr>
+                        <th>Index</th>
+                        <th>Rider Name</th>
+                        <th>Area</th>
+                        <th>Vehicle Name</th>
+                        <th>Contact</th>
+                    </tr>
+                </thead>
+
+                {riders.map((rider, index) =>
+                    <tbody
+                        key={rider._id}
+                    >
+                        <tr>
+                            <td>{index}</td>
+                            <td>{rider.name}</td>
+                            <td>{rider.area}</td>
+                            <td>{rider.vehicleType}</td>
+                            <td>
+                               {rider.phone}
+                            </td>
+                        </tr>
+
+                    </tbody>
+                )}
+
+            </Table>
+
         </div>
     );
 };
