@@ -1,21 +1,32 @@
 import React from 'react';
+import axios from 'axios';
 import { useForm } from "react-hook-form";
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth'
-import './Register.css'
+import './RidersForm.css'
 
-const Register = () => {
-    const { register, handleSubmit } = useForm();
+const RidersForm = () => {
+    const { user, register, handleSubmit } = useForm();
     const { registerUser } = useAuth()
+    const navigate = useNavigate()
 
     const onSubmit = data => {
-        // if (data.password !== data.password2) {
+        // if (data.password != data.password2) {
         //     alert('your password did not match');
         //     return;
         // }
-        registerUser(data.email, data.password, data.name)
+        registerUser(data.email, data.password, data.name, navigate)
 
-        console.log(data)
+        axios.post('https://protected-atoll-65365.herokuapp.com/riders', data)
+            .then(res => {
+
+                console.log(res);
+            })
+
+        console.log(data);
+
     };
+
 
 
     return (
@@ -103,7 +114,9 @@ const Register = () => {
                     placeholder='Confirm password'
                 />
 
+
                 <input type="submit" />
+
             </form>
 
 
@@ -111,4 +124,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default RidersForm;

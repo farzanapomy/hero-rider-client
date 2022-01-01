@@ -1,10 +1,10 @@
 .register-form input{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
     width: 70%;
-    margin: 10px auto;
-    padding: 10px;
+    /* margin: 10px auto; */
+    /* padding: 10px; */
     border-radius: 10px;
 }
 .submit{
@@ -12,12 +12,8 @@
     color: white;
     padding: 10px 0px; 
 }
-.submit:hover{
-    background-color: #202020;
-}
-.register-form{
-    margin: 100px 0px;
-}
+
+
 .login-btn{
     padding: 8px 20px;
     border-radius: 10px;

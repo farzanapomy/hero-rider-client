@@ -1,5 +1,5 @@
 import authInitialize from "../pages/Login/firebase/firebase.init";
-import { GoogleAuthProvider, getAuth, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { getAuth, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { useEffect, useState } from "react";
 authInitialize()
 
@@ -11,24 +11,9 @@ const useFirebase = () => {
     const [isLoading, setIsLoading] = useState(true)
     const auth = getAuth();
 
-    // sign in with google 
 
-    const signInWithGoogle = () => {
-        setIsLoading(true)
-        const googleProvider = new GoogleAuthProvider()
-        signInWithPopup(auth, googleProvider)
-            .then((result) => {
-                const user = result.user;
-                // saveUser(user.email, user.displayName, 'PUT')
-                console.log(user);
-            })
-            .catch((error) => {
-                setError(error.massage)
-            })
-            .finally(() => setIsLoading(false))
-    }
 
-    const registerUser = (email, password, name) => {
+    const registerUser = (email, password, name, navigate) => {
         setIsLoading(true)
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
@@ -44,6 +29,8 @@ const useFirebase = () => {
                     }).catch((error) => {
                         setError(error.massage)
                     })
+                navigate('/bikerUser')
+                console.log(result);
             })
             .catch((error) => {
                 setError(error.massage)
@@ -51,13 +38,13 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false))
     }
 
-    const logInUser = (email, password) => {
+    const logInUser = (email, password,navigate) => {
         setIsLoading(true)
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 const user = result.user;
                 console.log(user);
-
+                navigate('/bikerUser')
             })
             .catch((error) => {
                 setError(error.massage)
@@ -127,7 +114,7 @@ const useFirebase = () => {
 
 
     return {
-        signInWithGoogle,
+
         user,
         // admin,
         isLoading,

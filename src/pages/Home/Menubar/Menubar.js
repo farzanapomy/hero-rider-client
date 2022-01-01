@@ -12,19 +12,20 @@ const Menubar = () => {
             <Navbar bg="dark" className='mb-2 ' variant="dark" sticky="right" collapseOnSelect expand="lg">
                 <Container>
                     <Navbar.Brand className='main-title' as={Link} to="/home#home">
-                    Hero Rider
+                        Hero Rider
                     </Navbar.Brand>
 
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end ">
                         <Nav className="ms-auto">
                             <Nav.Link as={Link} to="/home#home">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/RidersForm">Join as a Rider</Nav.Link>
                             {
                                 user.email &&
                                 <Nav.Link as={Link} to="/Dashboard">Dashboard</Nav.Link>
                             }
                             {
-                            !user.email &&
+                                !user.email &&
                                 <Nav.Link as={Link} to="/login">Login</Nav.Link>
                             }
                             {

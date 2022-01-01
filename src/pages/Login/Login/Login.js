@@ -7,20 +7,17 @@ import useAuth from '../../../hooks/useAuth';
 import './Login.css'
 
 const Login = () => {
-    const { signInWithGoogle, logInUser, error } = useAuth()
+    const { logInUser, error } = useAuth()
     const { register, handleSubmit } = useForm();
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const onSubmit = data => {
-        logInUser(data.email, data.password)
+        logInUser(data.email, data.password, navigate)
 
         console.log(data)
     };
 
-    // const handleGoogleSignIn = () => {
-    //     signInWithGoogle(navigate)
-    // }
-
+  
 
     return (
         <div>
@@ -32,15 +29,14 @@ const Login = () => {
             </form>
             <div>
                 <h6>New User ??
-                    <Link to='/register'> Go to register.
+                    <Link to='/Riders'> Go to register.
                     </Link>
                 </h6>
             </div>
             {
                 error && <p>{error}</p>
             }
-            {/* <p>{error}</p>
-            <button onClick={handleGoogleSignIn} className='login-btn'>signIn with google</button> */}
+           
         </div>
     );
 };
