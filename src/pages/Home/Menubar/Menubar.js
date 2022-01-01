@@ -6,7 +6,8 @@ import useAuth from '../../../hooks/useAuth';
 
 const Menubar = () => {
     const { user, logOut, admin } = useAuth()
-    console.log(admin);
+    console.log(user);
+
     return (
 
         <>
@@ -40,14 +41,14 @@ const Menubar = () => {
                             }
 
                             {
-                                (user?.email && !admin ) && 
+                                user?.email &&
                                 <Nav.Link as={Link} to="/Riders" className='text-white'>
-                                   Rider profile
+                                    Rider profile
                                 </Nav.Link>
                             }
 
                             {
-                                (user?.email && !admin ) && 
+                                user?.email &&
                                 <Nav.Link as={Link} to="/Learners" className='text-white'>
                                     Learner profile
                                 </Nav.Link>

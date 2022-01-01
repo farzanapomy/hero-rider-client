@@ -26,7 +26,7 @@ const handleInputField = (e) => {
 const handleInputSearch = () => {
     fetch(`https://protected-atoll-65365.herokuapp.com/searchLearners?search=${search}`)
         .then((res) => res.json())
-        .then((result) => setLearners(result));
+        .then((data) => setLearners(data));
 
     console.log(search);
 };
@@ -43,9 +43,7 @@ return (
         </button>
 
         <Table hover variant="dark" responsive>
-            <thead
-
-            >
+            <thead>
                 <tr>
                     <th>Index</th>
                     <th>learner Name</th>

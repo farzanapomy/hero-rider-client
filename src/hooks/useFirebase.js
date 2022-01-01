@@ -30,7 +30,6 @@ const useFirebase = () => {
                         setError(error.massage)
                     })
                 navigate('/home')
-                console.log(result);
             })
             .catch((error) => {
                 setError(error.massage)
@@ -42,9 +41,10 @@ const useFirebase = () => {
         setIsLoading(true)
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
+                setUser()
                 const user = result.user;
                 console.log(user);
-                navigate('/Riders')
+                navigate('/home')
             })
             .catch((error) => {
                 setError(error.massage)
@@ -117,7 +117,6 @@ const useFirebase = () => {
 
         user,
         admin,
-        saveUser,
         isLoading,
         registerUser,
         logInUser,
