@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {  } from 'react';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +9,6 @@ const RidersForm = () => {
     const { register, handleSubmit } = useForm();
     const { registerUser } = useAuth()
     const navigate = useNavigate()
-    const [image, setImage] = useState(null)
 
     const onSubmit = data => {
         // if (data.password != data.password2) {
