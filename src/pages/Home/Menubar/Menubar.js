@@ -19,8 +19,12 @@ const Menubar = () => {
                     <Navbar.Collapse className="justify-content-end ">
                         <Nav className="ms-auto">
                             <Nav.Link as={Link} to="/home#home">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/RidersForm">Join as a Rider</Nav.Link>
-                            <Nav.Link as={Link} to="/LearnerDriving">Join as a Learner</Nav.Link>
+                            {!user.email && 
+                            <div>
+
+                                <Nav.Link as={Link} to="/RidersForm">Join as a Rider</Nav.Link>
+                                <Nav.Link as={Link} to="/LearnerDriving">Join as a Learner</Nav.Link>
+                            </div>}
                             {
                                 user.email &&
                                 <Nav.Link as={Link} to="/Dashboard">Dashboard</Nav.Link>
@@ -29,9 +33,22 @@ const Menubar = () => {
                                 !user.email &&
                                 <Nav.Link as={Link} to="/login">Login</Nav.Link>
                             }
+
                             {
                                 user?.email &&
                                 <Nav.Link as={Link} to="/Riders" className='text-white'>
+                                    Go to your profile
+                                </Nav.Link>
+                            }
+                            {
+                                user?.email &&
+                                <Nav.Link as={Link} to="/Learners" className='text-white'>
+                                    your profile
+                                </Nav.Link>
+                            }
+                            {
+                                user?.email &&
+                                <Nav.Link as={Link} to="/home" className='text-white'>
                                     Hello  {user?.displayName}
                                 </Nav.Link>
                             }

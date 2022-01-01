@@ -3,6 +3,7 @@ import './App.css';
 import AuthProvider from './contexts/AuthProvider';
 import AllRider from './pages/Backend/AllRider/AllRider';
 import LearnerDriving from './pages/Backend/LearnerDriving/LearnerDriving';
+import Learners from './pages/Backend/Learners/Learners';
 import Riders from './pages/Backend/Riders/Riders';
 import RidersForm from './pages/Backend/RidersForm/RidersForm';
 import Footer from './pages/Home/Footer/Footer';
@@ -24,6 +25,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/RidersForm" element={<RidersForm />} />
             <Route path="/Riders" element={<Riders />} />
+            <Route path="/Learners" element={<Learners />} />
 
               <Route path="/AllRider" element={<AllRider />} />
             <Route path="/login" element={<Login />} />
